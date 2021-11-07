@@ -66,8 +66,8 @@ extern int yydebug;
     COMMA_TOK = 272,
     LCURL_TOK = 273,
     RCURL_TOK = 274,
-    LSQUARE_TOK = 275,
-    RSQUARE_TOK = 276,
+    LSQR_TOK = 275,
+    RSQR_TOK = 276,
     BIT_AND_TOK = 277,
     BIT_OR_TOK = 278,
     BACKSLASH_TOK = 279,
@@ -137,8 +137,8 @@ extern int yydebug;
 #define COMMA_TOK 272
 #define LCURL_TOK 273
 #define RCURL_TOK 274
-#define LSQUARE_TOK 275
-#define RSQUARE_TOK 276
+#define LSQR_TOK 275
+#define RSQR_TOK 276
 #define BIT_AND_TOK 277
 #define BIT_OR_TOK 278
 #define BACKSLASH_TOK 279
@@ -191,7 +191,19 @@ extern int yydebug;
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
-typedef int YYSTYPE;
+union YYSTYPE
+{
+#line 263 "yacc2.y"
+
+	int number;		//for integer constants
+	float decimal;	//for real constants
+	char *string;	//for identifier names
+	int dtype;		//for datatype of expressions
+
+#line 204 "y.tab.h"
+
+};
+typedef union YYSTYPE YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define YYSTYPE_IS_DECLARED 1
 #endif

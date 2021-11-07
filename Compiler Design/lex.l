@@ -76,6 +76,8 @@ int validKwrd(char *buff) {
 \}					{if(!comment) return(RCURL_TOK);}
 \(					{if(!comment) return(LPAREN_TOK);}
 \)					{if(!comment) return(RPAREN_TOK);}
+\[                  {if(!comment) return(LSQR_TOK);}
+\]                  {if(!comment) return(RSQR_TOK);}
 {intconst}				{if(!comment) return(INTCONST);}
 {realconst}				{if(!comment) return(REALCONST);}
 {charconst}             {if(!comment) return(CHARCONST);}
@@ -86,8 +88,10 @@ int validKwrd(char *buff) {
 {identifier}	{
             if(!comment) {
                 int i;
-                if ((i = validKwrd(yytext)) != -1)
+                if ((i = validKwrd(yytext)) != -1) {
                     return (i);
+                }
+                yylval.string = strdup(yytext);
                 return (ID_TOK);
             };
     }
