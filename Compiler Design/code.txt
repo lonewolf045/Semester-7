@@ -1,0 +1,36 @@
+0: min:
+1: t1 = a < b
+2: t2 = NOT t1
+3: IF t2 GOTO 6
+4: RET a
+5: GOTO 7
+6: RET b
+7: END 
+8: abs:
+9: t3 = a < b
+10: t4 = NOT t3
+11: IF t4 GOTO 15
+12: t5 = b - a
+13: RET t5
+14: GOTO 17
+15: t6 = a - b
+16: RET t6
+17: END 
+18: MAIN: 
+19: t7 = i + j
+20: t8 = t7 / 2
+21: o = t8
+22: m = 0
+23: t9 = m < 10
+24: t10 = NOT t9
+25: IF t10 GOTO 29
+26: t11 = m - 1
+27: m = t11
+28: GOTO 23
+29: t12 = abs == 0
+30: t13 = NOT t12
+31: IF t13 GOTO 33
+32: i = j
+33: n = min
+34: RET 0
+35: END 

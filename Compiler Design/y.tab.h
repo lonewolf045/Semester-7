@@ -193,14 +193,17 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 263 "yacc2.y"
+#line 306 "inter_parser.y"
 
 	int number;		//for integer constants
 	float decimal;	//for real constants
 	char *string;	//for identifier names
-	int dtype;		//for datatype of expressions
+	struct Dtype {
+        int dtype;		//for datatype of expressions
+        char *place;
+    } Dtype;
 
-#line 204 "y.tab.h"
+#line 207 "y.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
